@@ -66,6 +66,26 @@ function moveAnimalsToCave() {
   drawAllAnimals()
 }
 
+function moveAnimalsToSwamp() {
+  for (let i = 0; i < partyAnimals.length; i++) {
+    const animal = partyAnimals[i];
+    animal.location = 'swamp'
+    console.log(`${animal.name} is now at the ${animal.location}`);
+  }
+
+  drawAllAnimals()
+}
+
+function moveAnimalsToLocation(location) {
+  for (let i = 0; i < partyAnimals.length; i++) {
+    const animal = partyAnimals[i];
+    animal.location = location
+    console.log(`${animal.name} is now at the ${animal.location}`);
+  }
+
+  drawAllAnimals()
+}
+
 // !SECTION
 
 // SECTION drawing ✏️
