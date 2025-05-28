@@ -86,6 +86,28 @@ function moveAnimalsToLocation(location) {
   drawAllAnimals()
 }
 
+function getRandomLocation() {
+  const locations = ['swamp', 'cave', 'amazon-river', 'taj-mahal']
+  // const randomNumber = Math.floor(Math.random() * 4)
+  const randomNumber = Math.floor(Math.random() * locations.length)
+  // console.log('random number is ' + randomNumber);
+
+  // console.log('random location is', locations[randomNumber])
+  // NOTE gives our random number to whoever called the function
+  return locations[randomNumber]
+}
+
+function moveAnimalsToRandomLocations() {
+  for (let i = 0; i < partyAnimals.length; i++) {
+    const animal = partyAnimals[i];
+    const randomLocation = getRandomLocation()
+    animal.location = randomLocation
+    console.log(`${animal.name} is now at the ${animal.location}`);
+  }
+
+  drawAllAnimals()
+}
+
 // !SECTION
 
 // SECTION drawing ✏️
@@ -124,18 +146,17 @@ function drawTajMahalAnimals() {
 function drawAnimalsAtLocation(location) {
   const locationElem = document.getElementById(location)
 
-
   let emojis = ''
   for (let i = 0; i < partyAnimals.length; i++) {
     const animal = partyAnimals[i]
     if (animal.location == location) {
       // console.log(animal);
-      emojis += animal.emoji
+      emojis += `<span title="${animal.name}">${animal.emoji}</span>`
     }
   }
 
   console.log(emojis);
-  locationElem.innerText = emojis
+  locationElem.innerHTML = emojis
 }
 
 function drawAllAnimals() {
