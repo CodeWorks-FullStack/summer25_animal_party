@@ -4,6 +4,18 @@ let firstName = 'jeremy'
 const lastName = 'fowler'
 
 
+function sayHello() {
+  console.log('hello');
+}
+
+const sayWassup = function () {
+  console.log('wassup');
+}
+
+const sayBonjour = () => {
+  console.log('bonjour');
+}
+
 firstName = 'jerms'
 // lastName = 'boogers' cannot reassign a constant value
 
@@ -105,6 +117,9 @@ function moveAnimalsToRandomLocations() {
     console.log(`${animal.name} is now at the ${animal.location}`);
   }
 
+  // NOTE this would also work!
+  // partyAnimals.forEach((animal) => { animal.location = getRandomLocation() })
+
   drawAllAnimals()
 }
 
@@ -147,13 +162,23 @@ function drawAnimalsAtLocation(location) {
   const locationElem = document.getElementById(location)
 
   let emojis = ''
-  for (let i = 0; i < partyAnimals.length; i++) {
-    const animal = partyAnimals[i]
+  // NOTE this is all valid working code
+  // for (let i = 0; i < partyAnimals.length; i++) {
+  //   const animal = partyAnimals[i]
+  //   console.log(animal);
+
+  //   if (animal.location == location) {
+  //     console.log(animal);
+  //     emojis += `<span title="${animal.name}">${animal.emoji}</span>`
+  //   }
+  // }
+
+  partyAnimals.forEach((animal) => {
     if (animal.location == location) {
-      // console.log(animal);
+      // console.log(animal)
       emojis += `<span title="${animal.name}">${animal.emoji}</span>`
     }
-  }
+  })
 
   console.log(emojis);
   locationElem.innerHTML = emojis
