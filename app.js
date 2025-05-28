@@ -45,11 +45,26 @@ const partyAnimals = [
   },
 ]
 
+
 // NOTE length property of an array tells you how many items are in an array
 // console.log('length of array is ' + partyAnimals.length);
 
 // console.log(4 == '4'); true
 // console.log(4 === '4'); false
+
+// !SECTION
+
+// SECTION logic ⚙️ (state changes)
+
+function moveAnimalsToCave() {
+  for (let i = 0; i < partyAnimals.length; i++) {
+    const animal = partyAnimals[i];
+    animal.location = 'cave'
+    console.log(`${animal.name} is now at the ${animal.location}`);
+  }
+
+  drawAllAnimals()
+}
 
 // !SECTION
 
@@ -103,13 +118,22 @@ function drawAnimalsAtLocation(location) {
   locationElem.innerText = emojis
 }
 
+function drawAllAnimals() {
+  drawAnimalsAtLocation('swamp')
+  drawAnimalsAtLocation('amazon-river')
+  drawAnimalsAtLocation('cave')
+  drawAnimalsAtLocation('taj-mahal')
+}
+
+
 // !SECTION
 
 // SECTION page load 🔃
 
-drawCaveAnimals()
-drawTajMahalAnimals()
-drawAnimalsAtLocation('swamp')
-drawAnimalsAtLocation('amazon-river')
+// drawCaveAnimals()
+// drawTajMahalAnimals()
+// drawAnimalsAtLocation('swamp')
+// drawAnimalsAtLocation('amazon-river')
 
+drawAllAnimals()
 // !SECTION
