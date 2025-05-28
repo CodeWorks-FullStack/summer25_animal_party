@@ -1,3 +1,5 @@
+// SECTION state 🧠 (global variables)
+
 let firstName = 'jeremy'
 const lastName = 'fowler'
 
@@ -29,7 +31,7 @@ const partyAnimals = [
   {
     name: 'rupert',
     emoji: '🦎',
-    location: 'swamp'
+    location: 'cave'
   },
   {
     name: 'spot',
@@ -44,18 +46,70 @@ const partyAnimals = [
 ]
 
 // NOTE length property of an array tells you how many items are in an array
-console.log('length of array is ' + partyAnimals.length);
+// console.log('length of array is ' + partyAnimals.length);
 
+// console.log(4 == '4'); true
+// console.log(4 === '4'); false
 
+// !SECTION
+
+// SECTION drawing ✏️
 
 function drawCaveAnimals() {
   const caveElem = document.getElementById('cave')
-  console.log('drawing cave animals', caveElem);
+  // console.log('drawing cave animals', caveElem);
+
+  let emojis = ''
+
   for (let i = 0; i < partyAnimals.length; i++) {
-    console.log('i is ' + i);
+    // console.log('i is ' + i);
     const animal = partyAnimals[i]
-    console.log(animal.emoji, animal.name);
+    if (animal.location == 'cave') {
+      // console.log(animal);
+      emojis += animal.emoji
+    }
   }
 
-  caveElem.innerText = '🐻‍❄️🐼'
+  caveElem.innerText = emojis
 }
+
+function drawTajMahalAnimals() {
+  const tajMahalElem = document.getElementById('taj-mahal')
+  let emojis = ''
+  for (let i = 0; i < partyAnimals.length; i++) {
+    const animal = partyAnimals[i]
+    if (animal.location == 'taj-mahal') {
+      emojis += animal.emoji
+    }
+  }
+
+  tajMahalElem.innerText = emojis
+}
+
+function drawAnimalsAtLocation(location) {
+  const locationElem = document.getElementById(location)
+
+
+  let emojis = ''
+  for (let i = 0; i < partyAnimals.length; i++) {
+    const animal = partyAnimals[i]
+    if (animal.location == location) {
+      // console.log(animal);
+      emojis += animal.emoji
+    }
+  }
+
+  console.log(emojis);
+  locationElem.innerText = emojis
+}
+
+// !SECTION
+
+// SECTION page load 🔃
+
+drawCaveAnimals()
+drawTajMahalAnimals()
+drawAnimalsAtLocation('swamp')
+drawAnimalsAtLocation('amazon-river')
+
+// !SECTION
